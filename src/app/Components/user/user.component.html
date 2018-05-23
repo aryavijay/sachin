@@ -1,0 +1,37 @@
+<p>
+  user works!
+</p>
+
+<div>
+  <h3> List of Team Members</h3>
+  <table width="100%" border="1">
+    <tr><th>Name</th><th>Location</th><th>Age</th></tr>
+    <tbody *ngFor="let member of team.members">
+    <tr>
+      <td>{{member.name}}</td>
+      <td>{{member.location}}</td>
+      <td>{{member.age}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div>
+  <h3> Using Child Component for Member</h3>
+  <span *ngFor="let member of team.members">
+    <label>Parent Component</label>
+    <app-profile [person]=member></app-profile>
+  </span>
+</div>
+
+<select>
+    <option *ngFor="let i of item">{{i}}</option>
+</select>
+
+
+-- Parent -Child
+
+-- Child to parent
+
+-- Between Components
