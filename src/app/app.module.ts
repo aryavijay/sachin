@@ -10,6 +10,7 @@ import {route} from './app.routes';
 import { HomeComponent } from './Components/home/home.component';
 import { UserComponent } from './Components/user/user.component';
 import { ChildComponent } from './components/child/child.component';
+import { StateService } from './service/state.service';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { ChildComponent } from './components/child/child.component';
     BrowserModule,
     RouterModule.forRoot(route),
   ],
-  providers: [],
+  providers: [
+    StateService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

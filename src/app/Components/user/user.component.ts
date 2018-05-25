@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {createOutput} from '@angular/compiler/src/core';
+import {StateService} from '../../service/state.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -11,8 +13,9 @@ export class UserComponent implements OnInit {
   team:any;
   childName= [];
   item: any =['NCR', 'Pune', 'Bombay'];
+  counter:number  = 0;
 
-  constructor() {
+  constructor(private  state: StateService, private router:Router) {
     this.team = { "members":[
       {
         name:"Vijay",
@@ -30,10 +33,20 @@ export class UserComponent implements OnInit {
 
 
   ngOnInit() {
+
   }
 
-  updatedNameEvent(event){
+  updatedNameEvent(event) {
     this.childName.push(event);
   }
 
+  updateState(){
+    this.state.setUserData(this.team.members[0]);
+    this.counter++;
+    this.router.navigateByUrl("/")
+  }
+  updateState2(){
+    this.state.setUserData(this.team.members[1]);
+    this.router.navigateByUrl("/")
+  }
 }
