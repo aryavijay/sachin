@@ -9,6 +9,7 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import {route} from './app.routes';
 import { HomeComponent } from './Components/home/home.component';
 import { UserComponent } from './Components/user/user.component';
+import { ChildComponent } from './components/child/child.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { UserComponent } from './Components/user/user.component';
     AppComponent,
     ProfileComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,

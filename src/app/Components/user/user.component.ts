@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {createOutput} from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-user',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class UserComponent implements OnInit {
 
   team:any;
-
+  childName= [];
   item: any =['NCR', 'Pune', 'Bombay'];
 
   constructor() {
@@ -29,6 +30,10 @@ export class UserComponent implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  updatedNameEvent(event){
+    this.childName.push(event);
   }
 
 }

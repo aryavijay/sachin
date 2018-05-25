@@ -30,8 +30,7 @@
 </select>
 
 
--- Parent -Child
 
--- Child to parent
+<app-child (name)="updatedNameEvent($event)" ></app-child>
 
--- Between Components
+<div *ngFor="let a of childName">{{a}} </div>
