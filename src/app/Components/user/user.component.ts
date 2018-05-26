@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
 
@@ -44,9 +44,12 @@ export class UserComponent implements OnInit {
     this.state.setUserData(this.team.members[0]);
     this.counter++;
     this.router.navigateByUrl("/")
+
+    this.state.setprofile({"name":"abc", "loc": "xyz"});
   }
   updateState2(){
     this.state.setUserData(this.team.members[1]);
+    this.state.setprofile({"name":"123124243", "loc": "98765"});
     this.router.navigateByUrl("/")
   }
 }

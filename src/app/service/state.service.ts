@@ -5,11 +5,11 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class StateService {
-
   private userObject = new BehaviorSubject<object>({});
 
-  constructor() { }
+  private profile = {};
 
+  constructor() { }
 
   setUserData( data:object){
     this.userObject.next(data);
@@ -17,5 +17,14 @@ export class StateService {
 
   getUserState(){
     return this.userObject;
+  }
+
+
+  setprofile(data:{}){
+    this.profile = data;
+  }
+
+  getData(){
+    return this.profile;
   }
 }

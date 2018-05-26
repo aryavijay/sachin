@@ -5,16 +5,20 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+
 })
 export class HomeComponent implements OnInit {
 
   constructor(private state: StateService, private router:Router) { }
 
   ngOnInit() {
-    this.state.getUserState().subscribe(data=>{
-      console.log(data);
-    })
+
+
+    let stateData  = this.state.getUserState();
+    console.log(stateData.value);
+
+    console.log(this.state.getData());
   }
 
 
