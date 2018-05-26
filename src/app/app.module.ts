@@ -11,6 +11,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { UserComponent } from './Components/user/user.component';
 import { ChildComponent } from './components/child/child.component';
 import { StateService } from './service/state.service';
+import {GaurdService} from './service/gaurd.service';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { StateService } from './service/state.service';
     RouterModule.forRoot(route),
   ],
   providers: [
-    StateService
+    StateService,
+    GaurdService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {createOutput} from '@angular/compiler/src/core';
 import {StateService} from '../../service/state.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -15,7 +15,17 @@ export class UserComponent implements OnInit {
   item: any =['NCR', 'Pune', 'Bombay'];
   counter:number  = 0;
 
-  constructor(private  state: StateService, private router:Router) {
+  constructor(private  state: StateService, private router:Router, private url : ActivatedRoute) {
+
+    //Route Params
+    console.log(" ID  : " + this.url.snapshot.params.id);
+
+    //Query Params
+    let queryParams = this.url.snapshot.queryParamMap;
+
+    console.log(" Name : "+ queryParams.params.name);
+    console.log(" Stage : "+ queryParams.params.stage);
+    console.log(" Class : "+ queryParams.params.class);
     this.team = { "members":[
       {
         name:"Vijay",
