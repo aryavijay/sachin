@@ -9,9 +9,9 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import {route} from './app.routes';
 import { HomeComponent } from './Components/home/home.component';
 import { UserComponent } from './Components/user/user.component';
-import { ChildComponent } from './components/child/child.component';
 import { StateService } from './service/state.service';
 import {GaurdService} from './service/gaurd.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -19,11 +19,11 @@ import {GaurdService} from './service/gaurd.service';
     AppComponent,
     ProfileComponent,
     HomeComponent,
-    UserComponent,
-    ChildComponent
+    UserComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(route),
   ],
   providers: [

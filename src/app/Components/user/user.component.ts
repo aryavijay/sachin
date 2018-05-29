@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {createOutput} from '@angular/compiler/src/core';
 import {StateService} from '../../service/state.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {HttpCallService} from '../../service/http-call.service';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
+  providers:[HttpCallService]
 })
 export class UserComponent implements OnInit {
 
@@ -15,35 +17,29 @@ export class UserComponent implements OnInit {
   item: any =['NCR', 'Pune', 'Bombay'];
   counter:number  = 0;
 
-  constructor(private  state: StateService, private router:Router, private url : ActivatedRoute) {
+  constructor(private  state: StateService, private router:Router, private url : ActivatedRoute,
+              private ser: HttpCallService) {
 
-    //Route Params
-    console.log(" ID  : " + this.url.snapshot.params.id);
-
-    //Query Params
-    let queryParams = this.url.snapshot.queryParamMap;
-
-    console.log(" Name : "+ queryParams.params.name);
-    console.log(" Stage : "+ queryParams.params.stage);
-    console.log(" Class : "+ queryParams.params.class);
-    this.team = { "members":[
-      {
-        name:"Vijay",
-        location:"NCR",
-        age:32
-      },
-      {
-          name:"Sachin",
-          location:"Pune",
-        age:28
-      },
-      ]
-    };
+    // this.team = { "members":[
+    //   {
+    //     name:"Vijay",
+    //     location:"NCR",
+    //     age:32
+    //   },
+    //   {
+    //       name:"Sachin",
+    //       location:"Pune",
+    //     age:28
+    //   },
+    //   ]
+    // };
   }
 
 
   ngOnInit() {
-
+    this.ser.getData().subscribe(data=>{
+      this.team = data;
+    });
   }
 
   updatedNameEvent(event) {

@@ -6,7 +6,7 @@
 <button (click)="updateState2()" >Update User State</button>
 
 
-<!--<div>
+<div>
   <h3> List of Team Members</h3>
   <table width="100%" border="1">
     <tr><th>Name</th><th>Location</th><th>Age</th></tr>
@@ -19,22 +19,25 @@
     </tbody>
   </table>
 
+</div>
+
+<!--<div>
+  <h3> Using Child Component for Member</h3>
+  <span *ngFor="let member of team.members">
+    <label>Parent Component</label>
+    <app-profile [person]=member></app-profile>
+  </span>
 </div>-->
 
-<!--<div>-->
-  <!--<h3> Using Child Component for Member</h3>-->
-  <!--<span *ngFor="let member of team.members">-->
-    <!--<label>Parent Component</label>-->
-    <!--<app-profile [person]=member></app-profile>-->
-  <!--</span>-->
-<!--</div>-->
-
-<!--<select>-->
-    <!--<option *ngFor="let i of item">{{i}}</option>-->
-<!--</select>-->
+<select>
+    <option *ngFor="let i of item">{{i}}</option>
+</select>
 
 
 
 <!--<app-child (name)="updatedNameEvent($event)" ></app-child>-->
 
-<!--<div *ngFor="let a of childName">{{a}} </div>-->
+<div *ngFor="let a of childName">{{a}} </div>
+
+<router-outlet>
+</router-outlet>

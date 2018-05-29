@@ -7,6 +7,8 @@ export class GaurdService implements CanActivate{
   constructor() { }
 
   canActivate() {
+
+    //return false;
     return true;
   }
 
