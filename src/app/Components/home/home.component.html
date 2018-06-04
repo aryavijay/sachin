@@ -2,4 +2,11 @@
   home works!
 </p>
 
+<h1>{{titleText}}</h1>
+<input type="text" (keyup)="updateSearch($event)"/>
+<p *ngFor="let a of friends | append:searchName">
+    {{a}}
+</p>
+<p>
 <a (click)="navigateToUser()"> User </a>
+</p>

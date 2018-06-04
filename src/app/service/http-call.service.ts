@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class HttpCallService {
@@ -7,9 +7,13 @@ export class HttpCallService {
   constructor(private http:HttpClient) { }
 
   getData(){
-    return this.http.get("//localhost/data.json");
+      let headerVar = new HttpHeaders();
+      headerVar = headerVar.append("test","sachin");
 
-    //return this.http.post("//localhost/data.json", {"formData":formdata});
+      let headers = new HttpHeaders({"AuthName":"dell"});
+
+    return this.http.get("//localhost/data.json" , {headers} );
   }
 
 }
+
