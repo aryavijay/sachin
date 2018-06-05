@@ -14,7 +14,7 @@ import {GaurdService} from './service/gaurd.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpInterceptorService} from "./service/http-interceptor.service";
 import {AppendPipe} from './pipes/append.pipe';
-import {FormsModule} from "@angular/forms";
+import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -29,11 +29,13 @@ import {FormsModule} from "@angular/forms";
         BrowserModule,
         HttpClientModule,
         FormsModule,
+        ReactiveFormsModule,
         RouterModule.forRoot(route),
     ],
     providers: [
         StateService,
         GaurdService,
+        FormBuilder,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpInterceptorService,

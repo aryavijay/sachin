@@ -1,7 +1,27 @@
 <p>
   home works!
 </p>
+<hr />
+<h1>User Form </h1>
+    <form [formGroup]="userForm">
+        <p>
+            UserName : <input type="text" formControlName="username"/>
+        </p>
 
+        <div>
+            password : <input type="text" formControlName="password"/>
+            <p style="color:red;" *ngIf="userForm.controls.password.invalid">Password Missing</p>
+        </div>
+
+        <p>
+            email : <input type="text" formControlName="email"/>
+        </p>
+
+        <button (click)="saveValues()"> Save </button>
+
+    </form>
+
+<hr />
 <h1>{{titleText}}</h1>
 Search String : {{searchName}}
 <br />
