@@ -14,6 +14,7 @@ import {GaurdService} from './service/gaurd.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpInterceptorService} from "./service/http-interceptor.service";
 import {AppendPipe} from './pipes/append.pipe';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {AppendPipe} from './pipes/append.pipe';
     imports: [
         BrowserModule,
         HttpClientModule,
+        FormsModule,
         RouterModule.forRoot(route),
     ],
     providers: [
