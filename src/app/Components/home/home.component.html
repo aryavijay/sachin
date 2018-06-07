@@ -2,12 +2,16 @@
   home works!
 </p>
 <hr />
-<h1>User Form </h1>
+<div style="width: 50%; float:left;">
+<h1>User Reactive Form </h1>
     <form [formGroup]="userForm">
-        <p>
+        <div>
             UserName : <input type="text" formControlName="username"/>
-        </p>
-
+        <p style="color:red;" *ngIf="userForm.get('username').invalid && userForm.get('username').touched">Username
+            Missing
+            or invalid</p>
+        </div>
+           <br/>
         <div>
             password : <input type="text" formControlName="password"/>
             <p style="color:red;" *ngIf="userForm.controls.password.invalid">Password Missing</p>
@@ -17,10 +21,34 @@
             email : <input type="text" formControlName="email"/>
         </p>
 
-        <button (click)="saveValues()"> Save </button>
+
+        <button (click)="saveValues()"> Save Reactive </button>
 
     </form>
+</div>
 
+<div style="width: 50%; float:left;">
+    <h1>User Model Form </h1>
+   <form (ngSubmit)="saveModelValue(form)" #form="ngForm">
+       <div>
+           UserName :  <input type="text" name="username" ngModel>
+       </div>
+
+       <div>
+           Password :  <input type="text" name="password" ngModel required>
+           <p  style="color:red;" *ngIf="!form.controls['password'].valid">Password Required</p>
+       </div>
+
+       <div>
+           Email :  <input type="email" name="emailText" ngModel required minlength="8">
+           <p  style="color:red;" *ngIf="!form.controls['emailText'].valid">Email Required</p>
+       </div>
+
+       <div><button>Submit</button></div>
+   </form>
+</div>
+
+<div style="clear: both"></div>
 <hr />
 <h1>{{titleText}}</h1>
 Search String : {{searchName}}

@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {StateService} from '../../service/state.service';
 import {Router} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 
 
 @Component({
@@ -13,22 +13,24 @@ export class HomeComponent implements OnInit {
     titleText = "How are You";
     friends: any[] = ['sachin', 'nitesh', 'vijay', 'alankar', 'achin'];
     searchName: string = ''
-    searchEleRef= '';
-    searchTextValue:string ='';
+    searchEleRef = '';
+    searchTextValue: string = '';
     @ViewChild('fieldName') ele;
-    userForm:FormGroup;
+    userForm: FormGroup;
+    userModel: {};
 
-    constructor(private state: StateService,fb: FormBuilder, private router: Router){
+    constructor(private state: StateService, fb: FormBuilder, private router: Router) {
         this.userForm = fb.group({
-            'username':'',
-            'password':['', Validators.required],
-            'email':'vijay.k@me.com'
+            'username': ['', Validators.compose([Validators.required, this.invalidUserName.bind(this)])],
+            'password': ['', Validators.required],
+            'email': 'vijay.k@me.com'
         });
-        }
+
+    }
 
     ngOnInit() {
 
-        this.userForm.controls.username.setValue('sachin');
+        //this.userForm.controls.username.setValue('sachin');
         let stateData = this.state.getUserState();
         console.log(stateData.value);
 
@@ -41,17 +43,29 @@ export class HomeComponent implements OnInit {
     }
 
 
+    invalidUserName(control: FormControl): {[key:string]:boolean}{
+        if(this.friends.indexOf(control.value) !== -1){
+            return {"InvalidName":true};
+        }
+        return null;
+    }
+
     updateSearch(event) {
-        this.searchEleRef =  this.ele.nativeElement.value;
+        this.searchEleRef = this.ele.nativeElement.value;
         this.searchName = event.target.value;
     }
 
-    saveValues(){
-        if(this.userForm.valid) {
+    saveValues() {
+        if (this.userForm.valid) {
             console.log("UserName : " + this.userForm.controls.username.value);
             console.log("Email : " + this.userForm.controls.email.value);
-        }else{
+        } else {
             alert("Form is not Valid");
         }
+    }
+
+    saveModelValue(form: NgForm) {
+        console.log(form.value);
+        //console.log(form.controls.username.value);
     }
 }
