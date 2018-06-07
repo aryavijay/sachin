@@ -31,17 +31,17 @@
     <h1>User Model Form </h1>
    <form (ngSubmit)="saveModelValue(form)" #form="ngForm">
        <div>
-           UserName :  <input type="text" name="username" ngModel>
+           UserName :  <input type="text" name="username" [ngModel]="defaultUserName">
        </div>
 
        <div>
-           Password :  <input type="text" name="password" ngModel required>
-           <p  style="color:red;" *ngIf="!form.controls['password'].valid">Password Required</p>
+           Password :  <input type="text" name="password" ngModel required #passText="ngModel">
+           <p  style="color:red;" *ngIf="!passText.valid">Password Required</p>
        </div>
 
        <div>
            Email :  <input type="email" name="emailText" ngModel required minlength="8">
-           <p  style="color:red;" *ngIf="!form.controls['emailText'].valid">Email Required</p>
+           <p  style="color:red;" *ngIf="1">Email Required</p>
        </div>
 
        <div><button>Submit</button></div>

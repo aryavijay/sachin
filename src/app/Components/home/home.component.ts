@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
     @ViewChild('fieldName') ele;
     userForm: FormGroup;
     userModel: {};
+    defaultUserName ="Vijay";
 
     constructor(private state: StateService, fb: FormBuilder, private router: Router) {
         this.userForm = fb.group({
@@ -65,7 +66,7 @@ export class HomeComponent implements OnInit {
     }
 
     saveModelValue(form: NgForm) {
-        console.log(form.value);
-        //console.log(form.controls.username.value);
+        console.log(form.form.get('username').value);
+        //console.log(form);
     }
 }
