@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
 
     invalidUserName(control: FormControl): {[key:string]:boolean}{
         if(this.friends.indexOf(control.value) !== -1){
+            //key to be user as error type or error code
             return {"InvalidName":true};
         }
         return null;

@@ -7,14 +7,17 @@
     <form [formGroup]="userForm">
         <div>
             UserName : <input type="text" formControlName="username"/>
-        <p style="color:red;" *ngIf="userForm.get('username').invalid && userForm.get('username').touched">Username
-            Missing
-            or invalid</p>
+            <p style="color:red;"
+               *ngIf="userForm.get('username').hasError('required') && userForm.get('username').touched">Username
+                Missing </p>
+            <p style="color:red;"
+               *ngIf="userForm.get('username').hasError('InvalidName') && userForm.get('username').touched">Invalid UserName
+            </p>
         </div>
            <br/>
         <div>
             password : <input type="text" formControlName="password"/>
-            <p style="color:red;" *ngIf="userForm.controls.password.invalid">Password Missing</p>
+            <p style="color:red;" *ngIf="userForm.get('password').invalid">Password Missing</p>
         </div>
 
         <p>
@@ -36,12 +39,14 @@
 
        <div>
            Password :  <input type="text" name="password" ngModel required #passText="ngModel">
-           <p  style="color:red;" *ngIf="!passText.valid">Password Required</p>
+           <p  style="color:red;" *ngIf="!passText.valid && passText.touched">Password Required</p>
        </div>
 
        <div>
-           Email :  <input type="email" name="emailText" ngModel required minlength="8">
-           <p  style="color:red;" *ngIf="1">Email Required</p>
+           Email :  <input type="email" name="emailText" ngModel required minlength="8" #emailRef="ngModel" email>
+           <p  style="color:red;" *ngIf="emailRef.hasError('required') && emailRef.touched">Email Required</p>
+           <p  style="color:red;" *ngIf="emailRef.hasError('minlength') && emailRef.touched">Minimum length is 8</p>
+           <p  style="color:red;" *ngIf="emailRef.hasError('email') && emailRef.touched">Email Address Format  Required</p>
        </div>
 
        <div><button>Submit</button></div>
